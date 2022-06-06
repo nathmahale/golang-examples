@@ -17,17 +17,31 @@ func Hello(name string) (string, error) {
 	return message, nil
 }
 
+func HelloNamed(names []string) (map[string]string, error) {
+	//maps for names with messages
+	messages := make(map[string]string)
+
+	for _, name := range names {
+		message, err := Hello(name)
+		if err != nil {
+			return nil, err
+		}
+		messages[name] = message
+	}
+	return messages, nil
+}
+
 func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
 func randomFormat() string {
 	formats := []string{
-		"Hi, %v. Welcome! ",
-		"Wonderful, that you graced us with your presence %v",
-		"Howdy %v...",
-		"Konnichiwa %v",
-		"Its great to have you %v San",
+		"Hi, %v. Welcome! \n",
+		"Good to have you %v \n",
+		"Howdy %v...\n",
+		"Konnichiwa %v\n",
+		"Its great to have you %v San\n",
 	}
 
 	return formats[rand.Intn(len(formats))]
