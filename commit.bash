@@ -3,19 +3,19 @@
 msg=${1}
 
 function add_files() {
-    echo "added all the files"
+    echo "[ INFO ] added all the files"
     git add --all
 
 }
 
 function commit_message() {
-    echo "committed with the message --> ${msg}"
+    echo "[ INFO ] committed with the message --> ${msg}"
     git commit -m "$msg"
 
 }
 
 function push_remote() {
-    echo "pushed to remote"
+    echo "[ INFO ] pushed to remote"
     git push
 
 }
